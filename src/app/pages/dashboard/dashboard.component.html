@@ -1,0 +1,78 @@
+<!-- <app-header></app-header> -->
+<div class="dashboard-page">
+    <div class="user-info py-3">
+        <div class="d-block">
+            <img src="../../../assets/svg/user-logo.svg" style="width: 80px" class="image-part mx-auto d-block" alt="Responsive image">
+        </div>
+        <div class="user-info-text px-3">
+            <span class="welcome pb-1">Welcome,</span>
+            <span class="firstname pb-1">Papa Johns</span>
+            <span class="lastname pb-1">Blood Group B+</span>
+        </div>
+    </div>
+
+    <div class="vehical-details p-3">
+        <div class="card">
+            <div class="card-header">Vehicle Details</div>
+            <div class="card-body">
+                <div class="vehical-list">
+                    <div *ngFor="let vehical of vehicalList; let i = index;">
+                        <div class="col-12 vehical-info py-3">
+                            <div class="image pr-2">
+                                <img *ngIf="vehical.type == '4 wheeler (MH46XY5300)'" src="../../../assets/svg/car-image.svg" style="width: 70px" class="image-part mx-auto d-block" alt="Responsive image">
+                                <img *ngIf="vehical.type == '2 wheeler (MH46XY5300)'" src="../../../assets/svg/bike-image.svg" style="width: 70px" class="image-part mx-auto d-block" alt="Responsive image">
+                            </div>
+                            <div class="text px-1">
+                                <span class="type">{{vehical.type}}</span>
+                                <span class="registration">Registration Number</span>
+                                <span class="model">Model No :</span>
+                                <span class="color">Colour :</span>
+                                <span class="fuel">Fuel type :</span>
+                            </div>
+                        </div>
+                        <div *ngIf="i != vehicalList.length-1" class="border-bottom"></div>
+                    </div>
+                    <div class="view-all">View All</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recent-claim-details p-3">
+        <div class="card">
+            <div class="card-header">Recent Services</div>
+            <div class="card-body">
+                <div class="recent-list">
+                    <div *ngFor="let recent of recentClaim; let i = index;">
+                        <div class="col-12 recent-info py-2">
+                            <span>{{recent.id}}</span>
+                            <span>{{recent.name}}</span>
+                            <span>{{recent.date}}</span>
+                            <span>{{recent.view}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-services-details p-3">
+        <div class="card">
+            <div class="card-header">Go to Services</div>
+            <div class="card-body" style="min-height: 100px;">
+                <div class="quick-list">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-services-details p-3">
+        <div class="card">
+            <div class="card-header">Recent Purchases</div>
+            <div class="card-body" style="min-height: 100px;">
+                <div class="quick-list">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

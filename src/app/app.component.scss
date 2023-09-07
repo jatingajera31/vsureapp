@@ -1,0 +1,126 @@
+.sidebar-page{
+    .sidebar-page{
+        font-family: 'Inter';
+        font-style: normal;
+        font-size: 14px;
+      }
+      .header-page{
+          background: #0000B5;
+          height: 70px;
+          align-items: center;
+          display: flex;
+      }
+      mat-toolbar {
+          background: #004a9f;
+          color: white;
+          background: #0000B5;
+          height: 70px;
+          align-items: center;
+          display: flex;
+        }
+        mat-sidenav {
+          margin: 0px;
+          width: 250px;
+          border-right: none;
+          background: #fff;
+          color: #000;
+          text-align: center;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .content {
+          height: calc(100vh - 130px);
+          border-radius: 10px;
+          margin: 16px;
+          margin-left: 32px;
+          padding: 16px;
+          overflow: auto;
+        }
+        mat-sidenav-container {
+          height: calc(100vh - 70px);
+        }
+        .menu-button {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          font-size: 1rem;
+        
+          mat-icon {
+            margin-right: 8px;
+          }
+        }
+        .avatar {
+          margin-top: 16px;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+        }
+        .name {
+          margin-top: 8px;
+          font-weight: normal;
+        }
+        .designation {
+          margin-top: 2px;
+          font-size: 0.7rem;
+          color: lightgrey;
+        }
+        mat-divider {
+          margin-top: 16px;
+          margin-bottom: 16px;
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+        .sidebar-container{
+          position: absolute;
+          width: 100%;
+        }
+        .sidebar-profile {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 25px 10px;
+          .image img{
+            border-radius: 50% !important;
+          }
+          .fa-close{
+            font-size: 20px;
+            margin-top: 4px;
+          }
+          .profile-text{
+            align-items: center;
+            display: flex;
+            margin-left: -10px;
+            font-weight: 600;
+          }
+          .span-text{
+            color: #B0B0B0;
+          }
+          .label-text{
+            padding: 0 !important;
+          margin: 0 5px;
+          color: #000;
+          }
+        }
+        .sidebar-menu-item-list{
+            text-align: start;
+            .menu-item {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+            padding: 10px 0 10px 25px;
+            border-top: 0.917234px solid #E7E7E7;
+            }
+            .menu-item.active {
+            background: #0000B5;
+            color: #FDBF20 !important;
+            }
+      }
+      .image-list{
+        display: flex;
+        background: #0000B5;
+        padding: 10px 0;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+      }
+}

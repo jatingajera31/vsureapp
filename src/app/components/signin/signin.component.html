@@ -1,0 +1,29 @@
+<div class="sign-in-component pt-5">
+  <div class="rounded mx-auto d-block">
+    <img src="../../../assets/svg/signin-logo.svg" class="rounded mx-auto d-block" alt="Responsive image" style="width: 45%;">
+  </div>
+  
+  <form class="login-form text-center border-light px-4 py-5 py-10" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+    <div class="login-part">
+     <input type="text" formControlName="contactFormName"  placeholder="Enter email or user name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactFormName.errors }" />
+        <div *ngIf="submitted && f.contactFormName.errors" class="invalid-feedback">
+            <div *ngIf="f.contactFormName.errors.required">Email or  UserName is required</div>
+        </div>
+    
+        <div class="pass-demo">
+          <input [type]="passwordShow ? 'text' : 'password'" formControlName="contactFormPassword" id="defaultContactFormPassword" mdbInput
+            class="form-control mb-4" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.contactFormPassword.errors }">
+            <i [ngClass]="passwordShow ? 'fa fa-eye eye-icon' : 'fa fa-eye-slash eye-icon password-hidden'" aria-hidden="true"  (click)="handlePassShow()"></i>
+            <div *ngIf="submitted && f.contactFormPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.contactFormPassword.errors.required">Password is required</div>
+          </div>
+        </div>
+      <div class="forgot-pass-text">forgot password?</div>
+    </div>
+  
+    <div class="button-part">
+      <button mdbBtn type="submit" class="col-12 z-depth-0 my-2 waves-effect sign-in" mdbWavesEffect >Sign in</button>
+      <button mdbBtn type="button" class="col-12 z-depth-0 my-1 waves-effect sign-up" (click)="signupPage()" mdbWavesEffect>Sign up</button>
+    </div>
+  </form>
+</div>

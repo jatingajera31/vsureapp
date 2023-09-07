@@ -1,0 +1,56 @@
+.approved-color-page{
+    padding: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+    .approved-color, .proposed-color{
+        border: 1px solid #B0B0B0;
+        border-radius: 22px;
+        padding: 5px;
+    }
+    .approved-color div, .proposed-color div {
+        padding: 6px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+    .color-1{
+        background: linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-2{
+        background: linear-gradient(90deg, #9392C6 4.04%, #E2E2F7 100%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-3{
+        background: linear-gradient(90deg, #FFA49A 4.04%, #FED5C4 100%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-4{
+        background: linear-gradient(270deg, #C1B0E3 2.17%, #D3AAD1 97.83%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-5{
+        background: linear-gradient(270deg, #D3AAD1 0%, #EAA1B9 89.44%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-6{
+        background: linear-gradient(89.67deg, #ECE8FF -0.7%, #E9E3FC 15.16%, #D9CBEC 98.43%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-7{
+        background: linear-gradient(90deg, #9DD2FF -0.66%, #B5DCFF 36.23%, #E6F0FF 99.06%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-8{
+        background: linear-gradient(90deg, #FFC859 0%, #FECC76 23%, #FDD5B3 74.99%, #FCD9CB 99.99%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-9{
+        background: linear-gradient(270deg, #EFB0BB 0%, #F588A1 43%, #FC5781 100%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-10{
+        background: linear-gradient(90deg, #C7C7C7 0%, #E8EFFF 100%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-11{
+        background: linear-gradient(90deg, #D4D4D4 0%, #FFE5E6 100%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+    .color-12{
+        background: linear-gradient(90deg, #D5D5E0 0%, #FAF7FD 100%), linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), linear-gradient(90deg, #C192C6 4.04%, #E2D0E3 100%);
+    }
+}

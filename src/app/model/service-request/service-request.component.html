@@ -1,0 +1,82 @@
+<div class="service-request-model">
+    <div class="card">
+      <div class="card-header">
+          <img
+            src="../../../assets/svg/back-arrow.svg"
+            class="image-part d-block back-icon"
+            alt="Responsive image"
+          />
+          <span>Request Service/Assistance</span>
+          <div></div>
+      </div>
+      <div class="card-body">
+        <div class="text-center py-1 header-ser" *ngIf="!isSelect"> Please select your type of service </div>
+        <div class="radio-group text-center py-2" [class.select]="isSelect">
+            <div class="custom-control custom-radio custom-control-inline text-center">
+                <input type="radio" class="custom-control-input" id="defaultInline1" name="radioName" mdbInput value="Emergency" (change)="handleType($event)">
+                <label class="custom-control-label" for="defaultInline1">Emergency</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline text-center">
+                <input type="radio" class="custom-control-input" id="defaultInline2" name="radioName" value="Non-Emergency" mdbInput (change)="handleType($event)">
+                <label class="custom-control-label" for="defaultInline2">Non-Emergency</label>
+            </div>
+        </div>
+
+        <div *ngIf="isEmergency">
+            <div class="emergncy-header">
+                <div class="label-type" style="width: 100%;">Select Breakdown Type : </div>
+
+                <select class="browser-default custom-select" (change)="getValue($event)">
+                    <option *ngFor="let cat of optionsSelect" [value]="cat.label" >
+                        {{cat.label}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="isSelectVal == 'Other'"> 
+                <div style="font-weight: 400;">Please please describe about your issue</div>
+                <textarea class="textarea-map" rows="3" ></textarea>
+            </div>
+            <div *ngIf="isSelectVal == 'Doorstep Service';else other_content">
+                <div class="d-flex justify-content-between date-pickjer-doorstep">
+                    <label>Date</label>
+                    <div>
+                        <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                </div>
+            </div>
+            <ng-template #other_content>
+                <div style="font-weight: 400;">
+                    {{isSelectVal == 'Pick up & Drop' ? 'Select Pickup Location' :  'Select your current location'}}
+                </div>
+                <div class="vehicle-google-map">
+                    <div *ngIf="apiLoaded | async">
+                        <!-- <google-map></google-map> -->
+                        <app-google-maps></app-google-maps>
+                    </div>
+                </div>
+                <div *ngIf="isSelectVal == 'Pick up & Drop'" class="px-2">
+                    <input type="text" class="my-2 input-pickup" placeholder="Type Address" />
+                    <input type="text" class="my-2 input-pickup" placeholder="Pincode"/>
+                    <input type="text" class="my-2 input-pickup" placeholder="Pincode"/>
+                </div>
+            </ng-template>
+        </div>
+
+      </div>
+      <div class="card-footer">
+          <button class="send"  (click)="commonMessageShow()">Send</button>
+      </div>
+    </div>
+</div>
+
+<div mdbModal #finalAdd="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myfinalAddLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content added-success">
+            <div class="modal-body">
+                Your request has been successfully registered; You will receive a call back from our Assistance Centre.
+            </div>
+      </div>
+    </div>
+</div>

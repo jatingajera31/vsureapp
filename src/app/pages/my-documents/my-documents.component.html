@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="heading">Upload Document</div>
+    <div>
+        <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+            <input type="file" (change)="onFileChange($event)" accept="image/*">
+            <button type="submit">Upload Image</button>
+          </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+.common-message-dialog, .common-message-button {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    color: #000000;
+    margin: auto;
+    width: 400px;
+}
+.common-message-button{
+    padding: 0 !important;
+    .common-message-dialog {
+        padding: 20px 10px !important;
+    }
+}
+@media (min-width:365px)  and (max-width:425px)  {
+    .common-message-dialog, .common-message-button{
+        width: 350px !important;
+    }
+}
+@media screen and (max-width:365px) {
+    .common-message-dialog, .common-message-button{
+        width: 310px !important;
+    }
+}
+button {
+    background: #E5E5E5;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    margin: 0;
+}
+
+.buy-plan{
+    border-right: 2px solid #FFFFFF;
+    border-radius: 0 0 0 10px;
+}
+.goto-service{
+    border-radius: 0 0 10px 0;
+}

@@ -1,0 +1,13 @@
+<div class="common-message-dialog" *ngIf="!button">
+    {{message}}
+</div>
+<div class="common-message-button" *ngIf="button">
+    <div class="common-message-dialog">
+        {{message}}
+    </div>
+    <div class="btn-footer">
+        <button class="buy-plan">Buy Plans</button>
+        <button class="goto-service" (click)="openServiceDialog()">Go to Services</button>
+    </div>
+       
+</div>

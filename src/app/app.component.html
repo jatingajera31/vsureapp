@@ -1,0 +1,55 @@
+<!-- <div class="sidebar-page">
+    <div class="sidebar-header">
+        <mat-toolbar class="mat-elevation-z8">
+            <div class="rounded  d-block"  *ngIf="sidenav.mode === 'over'"
+              (click)="sidenav.toggle()">
+                <img src="../../../assets/svg/sidebar-logo.svg" class="mx-auto d-block" alt="Responsive image">
+            </div>
+            <div class="rounded mx-auto d-block">
+                <img src="../../../assets/svg/dashboard-logo.svg" class="rounded mx-auto d-block" alt="Responsive image">
+            </div>
+        </mat-toolbar>
+      </div>
+      <div class="sidebar-page">
+          
+          <mat-sidenav-container class="sidebar-container" [class.active]="sidenav.opened">
+            <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+              <div class="sidebar-profile">
+                <div class="image">
+                  <img src="../../../assets/svg/user-logo.svg" style="width: 40px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                </div>
+                <div class="profile-text"><span class="span-text">Hello, </span><label class="label-text">Papa Johns</label></div>
+                <div class="close-icon"><i class="fa fa-close" (click)="sidenav.toggle()"></i></div>
+              </div>
+          
+         
+              <div class="sidebar-menu-item-list">
+                <div class="menu-item">My Plans</div>
+                <div class="menu-item">My Claims</div>
+                <div class="menu-item">My Documents</div>
+                <div class="menu-item active" [routerLink]="['/vehicle-details']">My Vehicle</div>
+                <div class="menu-item">Voice Chat Support</div>
+                <div class="menu-item">Vehicle Assistance</div>
+                <div class="menu-item">Network Garages</div>
+                <div class="menu-item">Contact Us</div>
+              </div>
+          
+          
+              <div class="sidebar-footer">
+                <div class="image-list">
+                  <img src="../../../assets/svg/sidebar-home.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                  <img src="../../../assets/svg/sidebar-user.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                  <img src="../../../assets/svg/sidebar-setting.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                  <img src="../../../assets/svg/sidebar-pin.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                </div>
+              </div>
+              
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+          </mat-sidenav-container>
+      </div>
+</div> -->
+
+<router-outlet></router-outlet>

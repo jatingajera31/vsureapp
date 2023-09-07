@@ -1,0 +1,40 @@
+.sign-up-component {
+    height: 100%;
+    .signup-texts{
+        .signup {
+            font-weight: 600;
+            font-size: 20px;
+            color: #000084;
+        }
+        .per-info {
+            font-weight: 500;
+            font-size: 14px;
+            color: #B0B0B0;
+        }
+    }
+    .form-control{
+        padding: 25px;
+    }
+    .button-part {
+        button{
+            text-align: center;
+            text-transform: inherit;
+            border-radius: 9px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .sign-up.btn {
+            background: #0039CB;
+            color: #fff;
+        }
+    }
+    .pass-demo {
+        position: relative;
+    }
+    
+    i.eye-icon {
+        position: absolute;
+        right: 17px;
+        top: 18px;
+    }
+}

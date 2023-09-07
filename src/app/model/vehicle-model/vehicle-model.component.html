@@ -1,0 +1,34 @@
+<div class="vehicle-model">
+  <div class="card">
+    <div class="card-header">
+        <img
+          src="../../../assets/svg/back-arrow.svg"
+          class="image-part d-block back-icon"
+          alt="Responsive image"
+        />
+        <span>{{ vehicle?.rNumber }}</span>
+        <img
+            src="../../../assets/svg/delete-icon.svg"
+            class="image-part d-block delete-icon"
+            alt="Responsive image"
+            />
+    </div>
+    <div class="card-body">
+      <div class="register py-1"> Registration number : <span class="lable-text">4W234234234</span> </div>
+      <div class="register py-1"> Vehicle Type : <span class="lable-text">4 wheeler</span>   Make : <span class="lable-text">Honda</span> </div>
+      <div class="register py-1"> Model : <span class="lable-text">Accord Hybrid</span>   Registration Years : <span class="lable-text">2021</span> </div>
+      <div class="register py-1"> Variant : <span class="lable-text">Petrol</span>   Fuel Type : <span class="lable-text">Petrol</span> </div>
+      <div class="register py-1"> VSure Plan : <span class="lable-text">Petrol</span>  Policy Period : <span class="lable-text">Petrol</span> </div>
+      <div class="register py-1"> Insurance Company : <span class="lable-text">NA</span> </div>
+      <div class="address py-1"> Address : <span class="lable-text">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Mumbai - 400 001</span> </div>
+    </div>
+    <div class="card-footer">
+      <!-- <button mat-button [mat-dialog-close]=" vehicle?.rNumber" cdkFocusInitial>Ok</button> -->
+        <button class="buy-plan">Buy Plans</button>
+        <button class="goto-service" (click)="dialogRef.close(); openServiceDialog()">Go to Services</button>
+    </div>
+  </div>
+  <!-- <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        </div>  -->
+</div>
