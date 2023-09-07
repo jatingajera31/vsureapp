@@ -31,20 +31,13 @@ export class VehicleDetailsComponent implements OnInit {
   id: any;
   makeData: any;
   modelData: any;
-
+  vehicletype:any
 
   constructor(public dialog: MatDialog, private fb: UntypedFormBuilder,
 
     private vehicalService: VehicleService,private ApiServicesService:ApiServicesService
   ) {
-
-
-    this.vehicalService.getMakeData(this.id).subscribe((res: any) => {
-      this.makeData = JSON.parse(res).Table;
-      console.log("makeData", this.makeData)
-
-    })
-
+    this.getMake()
     // if (this.vehicalAdd.value.Make) {
     //   console.log("makeId", this.vehicalAdd.value.Make);
 
@@ -78,7 +71,23 @@ export class VehicleDetailsComponent implements OnInit {
   }
   // how to get value of makeId
 
+  getMake(vtype?:any){
+    this.vehicalService.getMakeData(this.id).subscribe((res: any) => {
+      // if(vtype === 'TwoWheeler'){
+      //   this.makeData = JSON.parse(res).Table.map((i:any)=>{  if(i.Vehicle_Type === 'TwoWheeler'){return i}else{};});
+      // } else if(vtype === 'private car'){
+      //   this.makeData = JSON.parse(res).Table;
+      // }
+      this.makeData = JSON.parse(res).Table;
+      console.log("makeData", this.makeData)
 
+    })
+  }
+  vehicleType(type){
+    console.log('type',type);
+    this.vehicletype = type
+    this.getMake(this.vehicletype)
+   }
 
   onMakeChange($event: any) {
     console.log("cityName", this.cityName);
@@ -93,7 +102,7 @@ export class VehicleDetailsComponent implements OnInit {
 
     this.vehicalService.getModalData(data).subscribe((res: any) => {
       this.modelData = JSON.parse(res).Table;
-      console.log("data", data)
+      console.log("data", res)
     })
   }
   ngOnInit(): void {

@@ -58,13 +58,13 @@
                                     <div class="custom-control custom-radio">
                                         <div>
                                             <input id="2wheel" type="radio" value="2 wheel" name="AssetType"
-                                                formControlName="AssetType">
+                                                formControlName="AssetType" (click)="vehicleType('TwoWheeler')">
                                             <label for="male">2 Wheel</label>
                                         </div>
 
                                         <div>
                                             <input id="4wheel" type="radio" value="4 wgeel" name="AssetType"
-                                                formControlName="AssetType">
+                                                formControlName="AssetType" (click)="vehicleType('private car')">
                                             <label for="female">4 Wheel</label>
                                         </div>
                                     </div>
@@ -76,8 +76,8 @@
                                         <select class="browser-default custom-select" formControlName="Make"
                                             (change)="onMakeChange($event)">
                                             <option selected>select</option>
-                                            <option *ngFor="let make of this.makeData"
-                                                [value]="make.Make_Name + ',' + make.Vehicle_Type">{{make.Make_Name}}
+                                            <option *ngFor="let make of this.makeData" 
+                                                [value]="make.Make_Name + ',' + make.Vehicle_Type"><span *ngIf="make.Vehicle_Type === vehicletype">{{make.Make_Name}}</span>
                                             </option>
                                         </select>
                                     </div>
