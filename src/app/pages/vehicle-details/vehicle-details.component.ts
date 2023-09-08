@@ -19,6 +19,7 @@ export class VehicleDetailsComponent implements OnInit {
   color: string = "";
   detailOpen: boolean = false
   vehicleOpen: boolean = false
+  fuel:any
   public vehicalAdd: UntypedFormGroup;
 
   dateRange = new FormGroup({
@@ -73,21 +74,37 @@ export class VehicleDetailsComponent implements OnInit {
 
   getMake(vtype?:any){
     this.vehicalService.getMakeData(this.id).subscribe((res: any) => {
-      // if(vtype === 'TwoWheeler'){
-      //   this.makeData = JSON.parse(res).Table.map((i:any)=>{  if(i.Vehicle_Type === 'TwoWheeler'){return i}else{};});
-      // } else if(vtype === 'private car'){
-      //   this.makeData = JSON.parse(res).Table;
-      // }
-      this.makeData = JSON.parse(res).Table;
-      console.log("makeData", this.makeData)
-
+      if(vtype === 'TwoWheeler'){
+        this.makeData = JSON.parse(res).Table.filter((i:any)=>{  if(i.Vehicle_Type === 'TwoWheeler')return i });
+        this.fuelType(vtype)
+      } else if(vtype === 'private car'){
+        this.makeData = JSON.parse(res).Table.filter((i:any)=>{  if(i.Vehicle_Type === 'PrivateCar') return i });
+        this.fuelType(vtype)
+      }
     })
   }
+
   vehicleType(type){
     console.log('type',type);
     this.vehicletype = type
     this.getMake(this.vehicletype)
    }
+
+  fuelType(vtype){
+    let payload = {
+      "LovGroupCode": vtype,
+      "ClaimType": "WarrantyHealthCheckUp",
+      "SurveyType": "Warranty",
+      "Mode": "NON GARAGE",
+      "VehicleType": "",
+      "Deployment": "Telkom"
+    }
+    this.vehicalService.getFuel(payload).subscribe((res: any) => {
+     this.fuel = JSON.parse(res);
+     console.log("fuel",this.fuel);
+     
+    })
+  }
 
   onMakeChange($event: any) {
     console.log("cityName", this.cityName);
@@ -118,7 +135,7 @@ export class VehicleDetailsComponent implements OnInit {
   
     this.ApiServicesService.getToken().subscribe((data:any)=>{
       this.ApiServicesService.getAssetList(asset, data).subscribe((data:any)=>{
-        console.log("data",data);
+        console.log("assetList",data);
         // this.toastrService.success('successfully register')
         // this.router.navigate(['/']);
       })

@@ -18,10 +18,13 @@ export class VehicleService extends HttpHelper {
     }
 
     getMakeData(id) {
-
-        return this.http.post(`${this.apiUrl}/getMake`, id, this.getHttpOptions());
-
+     return this.http.post(`${this.apiUrl}/getMake`, id, this.getHttpOptions());
     }
+
+    getFuel(data) {
+        return this.http.post(`${this.apiUrl}/GetLovsData`, data, this.getHttpOptions());
+       }
+
     RegisterAsset = (data) => {
         return this.http.post(`${this.apiUrl}/RegisterAsset`, data, this.getHttpOptions());
     }
