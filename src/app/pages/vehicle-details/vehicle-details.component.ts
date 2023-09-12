@@ -19,7 +19,8 @@ export class VehicleDetailsComponent implements OnInit {
   color: string = "";
   detailOpen: boolean = false
   vehicleOpen: boolean = false
-  fuel:any
+  fuel:any;
+  loginData:any;
   public vehicalAdd: UntypedFormGroup;
 
   dateRange = new FormGroup({
@@ -77,7 +78,7 @@ export class VehicleDetailsComponent implements OnInit {
       if(vtype === 'TwoWheeler'){
         this.makeData = JSON.parse(res).Table.filter((i:any)=>{  if(i.Vehicle_Type === 'TwoWheeler')return i });
         this.fuelType(vtype)
-      } else if(vtype === 'private car'){
+      } else if(vtype === 'PrivateCar'){
         this.makeData = JSON.parse(res).Table.filter((i:any)=>{  if(i.Vehicle_Type === 'PrivateCar') return i });
         this.fuelType(vtype)
       }
@@ -123,9 +124,13 @@ export class VehicleDetailsComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    let loginData = JSON.parse(localStorage.getItem('loginToken'))
-   let asset = {
-      "CustomerId":loginData.UserID,
+    this.loginData = JSON.parse(localStorage.getItem('loginToken'))
+    this.getAllAssetList()
+   }
+
+  getAllAssetList(){
+    let asset = {
+      "CustomerId":this.loginData.UserID,
       "EmployeeId":"",
       "EmployerId":"",
       "AdharId":"",
@@ -135,34 +140,11 @@ export class VehicleDetailsComponent implements OnInit {
   
     this.ApiServicesService.getToken().subscribe((data:any)=>{
       this.ApiServicesService.getAssetList(asset, data).subscribe((data:any)=>{
-        console.log("assetList",data);
+        this.vehicalList = JSON.parse(data)[0].Details[0].CustomerAssets
         // this.toastrService.success('successfully register')
         // this.router.navigate(['/']);
       })
     })
-    this.vehicalList = [
-      {
-        type: "4 wheeler (MH46XY5300)",
-        rNumber: "< MH46XY5300 >",
-        make: "Honda",
-      },
-      {
-        type: "2 wheeler (MH46XY5300)",
-        rNumber: "< MH46XY5300 >",
-        make: "Honda",
-      },
-      {
-        type: "4 wheeler (MH46XY5300)",
-        rNumber: "< MH46XY5300 >",
-        make: "Honda",
-      },
-      {
-        type: "2 wheeler (MH46XY5300)",
-        rNumber: "< MH46XY5300 >",
-        make: "Honda",
-      }
-    ]
-    
   }
 
   setStep(index: number) {
@@ -170,6 +152,7 @@ export class VehicleDetailsComponent implements OnInit {
   }
 
   headerClickOpen(num: number) {
+    this.getAllAssetList()
     if (num == 0) {
       this.detailOpen = true
     } else if (num == 1) {
@@ -195,10 +178,10 @@ export class VehicleDetailsComponent implements OnInit {
     });
   }
 
-  commonMessageShow() {
+  registerAsset() {
     console.log("add vehical form", this.vehicalAdd.value)
     const data = {
-      EmailId:"",
+      EmailId:localStorage.getItem('email'),
       AssetType: this.vehicalAdd.value.AssetType,
       Make: this.vehicalAdd.value.Make.split(",")[0],
       Model: this.vehicalAdd.value.Model.split(",")[0],

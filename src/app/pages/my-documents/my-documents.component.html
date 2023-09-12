@@ -2,6 +2,18 @@
     <div class="heading">Upload Document</div>
     <div>
         <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+            <div class="py-2 d-flex main-menu">
+                <div class="d-flex sub-menu">
+                    <label>Select Vehical:</label>
+                    <select class="browser-default custom-select" formControlName="vehical">
+                        <option selected>select</option>
+                        <option *ngFor="let vehical of vehicalList" 
+                            [value]="vehical.CustAssetId">{{vehical.CustMake}}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
             <input type="file" (change)="onFileChange($event)" accept="image/*">
             <button type="submit">Upload Image</button>
           </form>

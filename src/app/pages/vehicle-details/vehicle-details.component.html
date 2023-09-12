@@ -23,15 +23,15 @@
                             <div *ngFor="let vehical of vehicalList; let i = index;">
                                 <div class="col-12 vehical-info py-2" (click)="openVehicleDialog(vehical)">
                                     <div class="image pr-2">
-                                        <img *ngIf="vehical.type == '4 wheeler (MH46XY5300)'"
+                                        <img *ngIf="vehical.CustAssetType == 'PrivateCar'"
                                             src="../../../assets/svg/car-image.svg" style="width: 50px; height: 15px;"
                                             class="image-part mx-auto d-block" alt="Responsive image">
-                                        <img *ngIf="vehical.type == '2 wheeler (MH46XY5300)'"
+                                        <img *ngIf="vehical.CustAssetType == 'TwoWheeler'"
                                             src="../../../assets/svg/bike-image.svg" style="width: 50px; height: 15px;"
                                             class="image-part mx-auto d-block" alt="Responsive image">
                                     </div>
-                                    <div class="number">{{vehical.rNumber}}</div>
-                                    <div class="make">{{vehical.make}}</div>
+                                    <div class="number">{{vehical.CustRegistrationNo}}</div>
+                                    <div class="make">{{vehical.CustMake}}</div>
                                 </div>
                             </div>
                         </div>
@@ -57,14 +57,14 @@
                                     <label class="vehicle-type">Vehical Type :</label>
                                     <div class="custom-control custom-radio">
                                         <div>
-                                            <input id="2wheel" type="radio" value="2 wheel" name="AssetType"
+                                            <input id="2wheel" type="radio" value="TwoWheeler" name="AssetType"
                                                 formControlName="AssetType" (click)="vehicleType('TwoWheeler')">
                                             <label for="male">2 Wheel</label>
                                         </div>
 
                                         <div>
-                                            <input id="4wheel" type="radio" value="4 wgeel" name="AssetType"
-                                                formControlName="AssetType" (click)="vehicleType('private car')">
+                                            <input id="4wheel" type="radio" value="PrivateCar" name="AssetType"
+                                                formControlName="AssetType" (click)="vehicleType('PrivateCar')">
                                             <label for="female">4 Wheel</label>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
                                     <input type="text" class="custom-select form-control" formControlName="Remarks">
                                 </div>
                             </div>
-                            <button type="submit" class="card-header addtovehicle" (click)="commonMessageShow()">Add To
+                            <button type="submit" class="card-header addtovehicle" (click)="registerAsset()">Add To
                                 My Vehicle</button>
                         </div>
                     </div>

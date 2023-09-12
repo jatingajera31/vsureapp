@@ -12,15 +12,40 @@ export class MyDocumentsComponent implements OnInit {
 
   imageForm: FormGroup;
   fileName:any;
+  loginData:any;
+  vehicalList:any;
 
-  constructor(private formBuilder: FormBuilder,private apiService: ApiServicesService,private vehicalService: VehicleService) { }
+  constructor(private formBuilder: FormBuilder,private ApiServicesService:ApiServicesService,private vehicalService: VehicleService) { }
 
   ngOnInit() {
+    this.loginData = JSON.parse(localStorage.getItem('loginToken'))
     this.imageForm = this.formBuilder.group({
-      imageFile: [null] // FormControl for the image file
+      imageFile: [null], // FormControl for the image file
+      vehical:[]
     });
+    this.getAllAssetList()
   }
 
+  getAllAssetList(){
+    let asset = {
+      "CustomerId":this.loginData.UserID,
+      "EmployeeId":"",
+      "EmployerId":"",
+      "AdharId":"",
+      "RegistrationNo":"",
+      "PolicyNo":""
+  }
+  
+    this.ApiServicesService.getToken().subscribe((data:any)=>{
+      this.ApiServicesService.getAssetList(asset, data).subscribe((data:any)=>{
+        this.vehicalList = JSON.parse(data)[0].Details[0].CustomerAssets
+        console.log("vehical list",this.vehicalList);
+        
+        // this.toastrService.success('successfully register')
+        // this.router.navigate(['/']);
+      })
+    })
+  }
   onFileChange(event) {
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];
@@ -44,8 +69,11 @@ export class MyDocumentsComponent implements OnInit {
     const base64Image = this.imageForm.get('imageFile').value;
     var dataWithoutPrefix = base64Image.substring(base64Image.indexOf(',') + 1)
     console.log('Base64 Image:', base64Image);
+    console.log("this.imageForm.value.vehical",this.imageForm.value.vehical);
+    console.log("this.imageForm.value.vehical.split(",")[0]",this.imageForm.value.vehical.split(",")[0]);
+    
     let uploadFile = {
-      "ServiceNumber": "6764", //assestid
+      "ServiceNumber": this.imageForm.value.vehical.split(",")[0], //assestid
       "Service": "CustAsstService",
       "Latitude": "",
       "Longitude": "",
