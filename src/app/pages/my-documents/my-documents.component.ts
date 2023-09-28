@@ -59,7 +59,7 @@ export class MyDocumentsComponent implements OnInit {
           imageFile: reader.result // Set the base64 string to the form control
         });
       };
-      console.log("imageFile",reader.result);
+      console.log("imageFile",reader.result); 
       
     }
   }
