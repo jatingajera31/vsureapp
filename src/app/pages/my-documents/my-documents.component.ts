@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiServicesService } from 'src/app/services/api-services.service';
 import { VehicleService } from 'src/app/services/vehical.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-documents',
@@ -14,8 +15,11 @@ export class MyDocumentsComponent implements OnInit {
   fileName:any;
   loginData:any;
   vehicalList:any;
+  vehicalDocsImg:any;
+  serviceNumber:any;
 
-  constructor(private formBuilder: FormBuilder,private ApiServicesService:ApiServicesService,private vehicalService: VehicleService) { }
+  constructor(private formBuilder: FormBuilder,private ApiServicesService:ApiServicesService,
+    private vehicalService: VehicleService,private toastrService: ToastrService,) { }
 
   ngOnInit() {
     this.loginData = JSON.parse(localStorage.getItem('loginToken'))
@@ -45,6 +49,41 @@ export class MyDocumentsComponent implements OnInit {
         // this.router.navigate(['/']);
       })
     })
+  }
+
+  getVehicleDocImage(e:any){
+    this.serviceNumber = e.target.value
+    let payload = {
+      "ServiceNumber":this.serviceNumber,//assestId
+      "Filter":"CustAsstService"
+    }
+    this.ApiServicesService.getToken().subscribe((data:any)=>{
+      this.ApiServicesService.getDocumentImg(payload,data).subscribe((data:any)=>{
+        this.vehicalDocsImg = data
+        console.log("vehical docs image",this.vehicalDocsImg);
+        
+        // this.toastrService.success('successfully register')
+        // this.router.navigate(['/']);
+      })
+    })
+  
+
+  }
+
+  deletePhotoDocs(photoId:any){
+    let payload = {
+      "ServiceNumber":this.serviceNumber,//AssestID
+      "Filter":"CustAsstService",
+      "PhotoID":JSON.stringify(photoId)//PhotoID will get from GetPhotoDocumentsAPI
+      }
+    this.ApiServicesService.getToken().subscribe((data:any)=>{
+      this.ApiServicesService.deletePhotoDocs(payload,data).subscribe((data:any)=>{
+        this.vehicalDocsImg = data
+        console.log("vehical docs image",this.vehicalDocsImg);
+        this.toastrService.success('Delete Photo Docs successfully.')
+      })
+    })
+    
   }
   onFileChange(event) {
     if (event.target.files && event.target.files.length) {

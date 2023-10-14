@@ -27,6 +27,20 @@ export class ApiServicesService {
       return this.http.post(`https://vieva.in:9022/GetLoadCustomerData`,user , {headers: headers });
   }
 
+  getDocumentImg(user:any,auth_token:any){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${auth_token.access_token}`);
+      return this.http.post(`https://vieva.in:9022/GetPhotosDocuments`,user , {headers: headers });
+  }
+
+  deletePhotoDocs(user:any,auth_token:any){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${auth_token.access_token}`);
+      return this.http.post(`https://vieva.in:9022/DeleteDocument`,user , {headers: headers });
+  }
+
   registerUser(user:any,auth_token:any){
     console.log("servide auth token", auth_token.access_token)
   let headers = new HttpHeaders();

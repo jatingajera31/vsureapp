@@ -5,9 +5,9 @@
             <div class="py-2 d-flex main-menu">
                 <div class="d-flex sub-menu">
                     <label>Select Vehical:</label>
-                    <select class="browser-default custom-select" formControlName="vehical">
+                    <select class="browser-default custom-select" (change)="getVehicleDocImage($event)" formControlName="vehical">
                         <option selected>select</option>
-                        <option *ngFor="let vehical of vehicalList" 
+                        <option *ngFor="let vehical of vehicalList"
                             [value]="vehical.CustAssetId">{{vehical.CustMake}}
                         </option>
                     </select>
@@ -17,5 +17,11 @@
             <input type="file" (change)="onFileChange($event)" accept="image/*">
             <button type="submit">Upload Image</button>
           </form>
+    </div>
+    <div *ngFor="let img of vehicalDocsImg">
+        <div *ngIf ="img.AbsoultePathURL && img.AbsoultePathURL != null">
+        <img src="{{img.AbsoultePathURL}}" alt="" width="100" height="100">
+        <button (click)="deletePhotoDocs(img.PhotoID)">delete</button>
+        </div>
     </div>
 </div>

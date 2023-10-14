@@ -19,7 +19,7 @@ export class VehicleModelComponent implements OnInit {
   }
   ngOnInit() {
     this.vehicle = this.data.vehicle
-    console.log("data---",this.data, this.vehicle);
+    console.log("data---",this.vehicle);
   }
 
   openServiceDialog(){
