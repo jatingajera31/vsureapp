@@ -39,7 +39,7 @@ export class VehicleDetailsComponent implements OnInit {
 
     private vehicalService: VehicleService,private ApiServicesService:ApiServicesService
   ) {
-    this.getMake()
+    this.getMake('TwoWheeler')
     // if (this.vehicalAdd.value.Make) {
     //   console.log("makeId", this.vehicalAdd.value.Make);
 

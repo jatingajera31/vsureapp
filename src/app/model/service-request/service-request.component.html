@@ -27,8 +27,8 @@
                 <div class="label-type" style="width: 100%;">Select Breakdown Type : </div>
 
                 <select class="browser-default custom-select" (change)="getValue($event)">
-                    <option *ngFor="let cat of optionsSelect" [value]="cat.label" >
-                        {{cat.label}}
+                    <option *ngFor="let cat of optionsSelect" [value]="cat.LOVCODE" >
+                        {{cat.LOVNAME}}
                     </option>
                 </select>
             </div>

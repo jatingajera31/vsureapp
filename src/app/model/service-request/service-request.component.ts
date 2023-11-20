@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CommonMessageComponent } from '../common-message/common-message.component';
+import { ApiServicesService } from 'src/app/services/api-services.service';
 
 @Component({
   selector: 'app-service-request',
@@ -17,11 +18,13 @@ export class ServiceRequestComponent implements OnInit {
   apiLoaded: Observable<boolean>;
   optionsSelect: Array<any>;
   locationText:any
+  vehicalList: any;
 
   constructor(
     public dialogRef: MatDialogRef<ServiceRequestComponent>,
     public dialogRefCommon: MatDialogRef<CommonMessageComponent>,
     public dialog: MatDialog,
+    private ApiServicesService:ApiServicesService,
     httpClient: HttpClient
   ){
     this.optionsSelect = [
@@ -48,10 +51,28 @@ export class ServiceRequestComponent implements OnInit {
   handleType(event:any){
     console.log("event==",event.target.name, event.target.value);
     this.isSelect = true;
+    let service = {
+      "LovGroupCode": event.target.value,
+      "ClaimType": "WarrantyHealthCheckUp",
+      "SurveyType": "",
+      "Mode": "NON GARAGE",
+      "VehicleType": "",
+      "Deployment": ""
+  }
     if(event.target.value == 'Emergency'){
       this.isEmergency = true
+     this.ApiServicesService.getToken().subscribe((data:any)=>{
+        this.ApiServicesService.getServices(service, data).subscribe((res:any)=>{
+          this.optionsSelect = JSON.parse(res)
+        })
+      })
     }else{
       this.isEmergency = false
+      this.ApiServicesService.getToken().subscribe((data:any)=>{
+        this.ApiServicesService.getServices(service, data).subscribe((res:any)=>{
+          this.optionsSelect = JSON.parse(res)
+        })
+      })
     }
   }
 

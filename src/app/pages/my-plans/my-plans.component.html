@@ -1,1 +1,45 @@
-<p>my-plans works!</p>
+
+<h4>My Plan List</h4>
+<table>
+    <thead>
+      <tr>
+        <th>Types</th>
+        <th>Vehicles No</th>
+        <th>Make</th>
+        <th>PlanName</th>
+        <th>Premium</th>
+        <th>InsuredValue</th>
+        <th>CustAssetPolicyNo</th>
+        <th>Policy Status</th>
+        <!-- <th>Phone</th>
+        <th>Address</th>
+        <th>Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let vehical of vehicalList; let i = index;">
+        <th> <div class="image pr-2">
+            <img *ngIf="vehical.CustAssetType == 'PrivateCar'"
+                src="../../../assets/svg/car-image.svg" style="width: 50px; height: 15px;"
+                class="image-part mx-auto d-block" alt="Responsive image">
+            <img *ngIf="vehical.CustAssetType == 'TwoWheeler'"
+                src="../../../assets/svg/bike-image.svg" style="width: 50px; height: 15px;"
+                class="image-part mx-auto d-block" alt="Responsive image">
+        </div>
+        </th>
+        <td>{{vehical.CustRegistrationNo}}</td>
+        <td>{{vehical.CustMake}}</td>
+        <td>{{vehical.PlanName}}</td>
+        <td>{{vehical.Premium}}</td>
+        <td>{{vehical.InsuredValue}}</td>
+        <td>{{vehical.CustAssetPolicyNo}}</td>
+        <td>{{vehical.CustAssetPolicyStatus}}</td>
+        <!-- <td>{{ item.phone }}</td>
+        <td>{{ item.address }}</td> -->
+        <!-- <td>
+          <button type="button">Edit</button>
+          <button type="button">Delete</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>

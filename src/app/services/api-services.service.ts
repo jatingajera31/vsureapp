@@ -27,6 +27,20 @@ export class ApiServicesService {
       return this.http.post(`https://vieva.in:9022/GetLoadCustomerData`,user , {headers: headers });
   }
 
+  getNetworkGarage(user:any,auth_token:any){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${auth_token.access_token}`);
+      return this.http.post(`https://vieva.in:9022/GetLoadCustomerData`,user , {headers: headers });
+  }
+
+  getServices(user:any,auth_token:any){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${auth_token.access_token}`);
+      return this.http.post(`https://vieva.in:9022/GetLovsdata`,user , {headers: headers });
+  }
+
   getDocumentImg(user:any,auth_token:any){
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
