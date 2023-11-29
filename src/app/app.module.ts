@@ -43,6 +43,7 @@ import { MyDocumentsComponent } from './pages/my-documents/my-documents.componen
 import { NetworkGaragesComponent } from './pages/network-garages/network-garages.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
     declarations: [
@@ -89,6 +90,7 @@ import { ToastrModule } from 'ngx-toastr';
         MatDatepickerModule,
         MatNativeDateModule,
         MatGridListModule,
+        AgmCoreModule.forRoot({apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'}),
         ToastrModule.forRoot({
             timeOut: 3000,
             positionClass: 'toast-top-right',

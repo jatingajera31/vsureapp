@@ -15,6 +15,10 @@ export class ApiServicesService {
     return this.http.post(`https://vieva.in:9022/token`, 'UserName=' + '20062017' + '&password=' + '4M2farFqRF/knOGBv5DFrw==' + '&grant_type=password', authHttpOptions).pipe(map((res: any)=>res))
   }
 
+  getLocationHistroy(event:any){
+    return this.http.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${event.lat}&lon=${event.lng}`)
+  }
+
   SignIn(user:any):any{
     const authHttpOptions = { headers: new HttpHeaders({})}
     return this.http.post(`https://vieva.in:9022/token`, 'UserName=' + user.UserName + '&password=' + user.password + '&grant_type=password', authHttpOptions).pipe(map((res: any)=>res))
