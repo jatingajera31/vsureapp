@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit,Inject} from '@angular/core';
+import { MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CommonMessageComponent } from '../common-message/common-message.component';
 import { ApiServicesService } from 'src/app/services/api-services.service';
+import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-service-request',
@@ -19,13 +20,19 @@ export class ServiceRequestComponent implements OnInit {
   optionsSelect: Array<any>;
   locationText:any
   vehicalList: any;
+  vehicle:any;
+  cliamIntimateData:any;
 
+  claimForm!: FormGroup;
+  
   constructor(
     public dialogRef: MatDialogRef<ServiceRequestComponent>,
     public dialogRefCommon: MatDialogRef<CommonMessageComponent>,
     public dialog: MatDialog,
     private ApiServicesService:ApiServicesService,
-    httpClient: HttpClient
+    httpClient: HttpClient,
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ){
     this.optionsSelect = [
       { value: '0', label: 'Select' },
@@ -42,6 +49,12 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.claimForm = this.fb.group({
+      serviceType:[''],
+      breakdownType:[''],
+      OtherTypeBreakDown:['']
+    })
+    this.vehicle = this.data.vehicle
   }
 
   onNoClick(): void {
@@ -82,15 +95,32 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   commonMessageShow(){
+    this.cliamIntimateData.Claim.LossType = this.claimForm.value.breakdownType
+    let Claims = this.cliamIntimateData
+    console.log('final cliam obj',{Claims});
     this.dialogRef.close();
-    const dialogRefCommon = this.dialog.open(CommonMessageComponent, {
-      maxWidth: '100vw',
-      data: { message: 'Your request has been successfully registered; You will receive a call back from our Assistance Centre.' }
-    });
-    dialogRefCommon.afterClosed().subscribe((res:any) => {
-      console.log("res---",res);
-      
-    });
+    this.ApiServicesService.getToken().subscribe((data:any)=>{
+      this.ApiServicesService.claimRegister({Claims},data).subscribe((res:any)=>{
+        console.log('res of claim',res);
+        if(res.Remarks === "Success"){
+          const dialogRefCommon = this.dialog.open(CommonMessageComponent, {
+            maxWidth: '100vw',
+            data: { message: 'Your request has been successfully registered; You will receive a call back from our Assistance Centre.' }
+          });
+          dialogRefCommon.afterClosed().subscribe((res:any) => {
+            console.log("res---",res);
+           });
+        }
+      })
+    })
+    
+    
+   
+  }
+
+  claimIntimateData(e){
+    console.log('claim intimation data in service',e);
+    this.cliamIntimateData = e
   }
 
 }

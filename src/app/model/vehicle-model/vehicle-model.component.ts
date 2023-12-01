@@ -25,7 +25,7 @@ export class VehicleModelComponent implements OnInit {
   openServiceDialog(){
     const dialogRef = this.dialog.open(ServiceRequestComponent, {
       maxWidth: '100vw',
-      // data: { vehicle:vehicle }
+      data: { vehicle:this.vehicle }
     });
     dialogRef.afterClosed().subscribe((res:any) => {
       console.log("res---",res);

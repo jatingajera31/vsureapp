@@ -1,3 +1,4 @@
+<form [formGroup]="claimForm" #form="ngForm">
 <div class="service-request-model">
     <div class="card">
       <div class="card-header">
@@ -13,11 +14,11 @@
         <div class="text-center py-1 header-ser" *ngIf="!isSelect"> Please select your type of service </div>
         <div class="radio-group text-center py-2" [class.select]="isSelect">
             <div class="custom-control custom-radio custom-control-inline text-center">
-                <input type="radio" class="custom-control-input" id="defaultInline1" name="radioName" mdbInput value="Emergency" (change)="handleType($event)">
+                <input type="radio" class="custom-control-input" id="defaultInline1" name="radioName" formControlName="serviceType" mdbInput value="Emergency" (change)="handleType($event)">
                 <label class="custom-control-label" for="defaultInline1">Emergency</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline text-center">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="radioName" value="Non-Emergency" mdbInput (change)="handleType($event)">
+                <input type="radio" class="custom-control-input" id="defaultInline2" name="radioName" formControlName="serviceType" value="Non-Emergency" mdbInput (change)="handleType($event)">
                 <label class="custom-control-label" for="defaultInline2">Non-Emergency</label>
             </div>
         </div>
@@ -26,7 +27,7 @@
             <div class="emergncy-header">
                 <div class="label-type" style="width: 100%;">Select Breakdown Type : </div>
 
-                <select class="browser-default custom-select" (change)="getValue($event)">
+                <select class="browser-default custom-select" formControlName="breakdownType" (change)="getValue($event)">
                     <option *ngFor="let cat of optionsSelect" [value]="cat.LOVCODE" >
                         {{cat.LOVNAME}}
                     </option>
@@ -34,7 +35,7 @@
             </div>
             <div *ngIf="isSelectVal == 'Other'"> 
                 <div style="font-weight: 400;">Please please describe about your issue</div>
-                <textarea class="textarea-map" rows="3" ></textarea>
+                <textarea class="textarea-map" formControlName="OtherTypeBreakDown" rows="3" ></textarea>
             </div>
             <div *ngIf="isSelectVal == 'Doorstep Service';else other_content">
                 <div class="d-flex justify-content-between date-pickjer-doorstep">
@@ -53,7 +54,7 @@
                 <div class="vehicle-google-map">
                     <div *ngIf="apiLoaded | async">
                         <!-- <google-map></google-map> -->
-                        <app-google-maps></app-google-maps>
+                        <app-google-maps [vehicle]="this.vehicle" (getCliamIntimateData)="claimIntimateData($event)"></app-google-maps>
                         
                         
                         <!-- my map code start -->
@@ -80,7 +81,7 @@
       </div>
     </div>
 </div>
-
+</form>
 <div mdbModal #finalAdd="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myfinalAddLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content added-success">

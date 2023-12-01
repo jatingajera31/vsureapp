@@ -169,6 +169,7 @@ export class VehicleDetailsComponent implements OnInit {
   }
 
   openVehicleDialog(vehicle: any) {
+    console.log('vehicle',vehicle);
     const dialogRef = this.dialog.open(VehicleModelComponent, {
       data: { vehicle: vehicle },
       maxWidth: '100vw',

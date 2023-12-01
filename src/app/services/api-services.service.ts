@@ -66,4 +66,11 @@ export class ApiServicesService {
   headers = headers.set('Authorization', `Bearer ${auth_token.access_token}`);
     return this.http.post(`https://vieva.in:9022/RegisterCustomer`,user , {headers: headers });
   }
+  
+  claimRegister(user:any,auth_token:any){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${auth_token.access_token}`);
+      return this.http.post(`https://vieva.in:9022/ICIntimation`,user , {headers: headers });
+  }
 }
