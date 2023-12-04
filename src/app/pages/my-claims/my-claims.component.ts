@@ -12,6 +12,8 @@ export class MyClaimsComponent implements OnInit {
   loginData:any;
   vehicalList:any;
   imageForm: FormGroup;
+  selectedOption:any
+  filtered:any
 
   constructor(private formBuilder: FormBuilder,private ApiServicesService:ApiServicesService) { }
 
@@ -21,8 +23,8 @@ export class MyClaimsComponent implements OnInit {
       vehical:[]
     });
     this.getAllAssetList()
-
   }
+
   getAllAssetList(){
     let asset = {
       "CustomerId":this.loginData.UserID,
@@ -40,8 +42,33 @@ export class MyClaimsComponent implements OnInit {
       })
     })
   }
+  
+  onOptionsSelected(event?: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.filtered = this.vehicalList.filter(t=> {
+      if (t.CustRegistrationNo === selectedValue.toString()) {
+        return t;
+      }
+    });
+    console.log('selectedOption',this.filtered);
+    this.ApiServicesService.getToken().subscribe((data:any)=>{
+      let asset = {
+        "Policy_no":this.filtered[0].CustAssetPolicyNo,
+        "Alternate_Policy_no":this.filtered[0].CustAssetPolicyNo,
+        "Claim_no":"MVO32088",
+        "Vehicle_Registration_Number":this.filtered[0].CustRegistrationNo
+    }
+      this.ApiServicesService.getClaimDetails(asset, data).subscribe((res:any)=>{
+        console.log("claim detalis",res);
+      })
+    })
+
+  }
 
   onSubmit(){
     
+  }
+  clickaa(){
+    alert('ss')
   }
 }

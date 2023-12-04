@@ -2,10 +2,10 @@
     <div class="py-2 d-flex main-menu">
         <div class="d-flex sub-menu">
             <label>Select Vehical:</label>
-            <select class="browser-default custom-select" formControlName="vehical">
+            <select class="browser-default custom-select" formControlName="vehical" (change)='onOptionsSelected($event)'>
                 <option selected>select</option>
                 <option *ngFor="let vehical of vehicalList" 
-                    [value]="vehical.CustAssetId">{{vehical.CustMake}}
+                    [value]="vehical.CustRegistrationNo">{{vehical.CustMake}}
                 </option>
             </select>
         </div>
