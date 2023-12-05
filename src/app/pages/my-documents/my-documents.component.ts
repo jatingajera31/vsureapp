@@ -51,10 +51,10 @@ export class MyDocumentsComponent implements OnInit {
     })
   }
 
-  getVehicleDocImage(e:any){
-    this.serviceNumber = e.target.value
+  getVehicleDocImage(e?:any){
+    this.serviceNumber = e?.target.value
     let payload = {
-      "ServiceNumber":this.serviceNumber,//assestId
+      "ServiceNumber":this.serviceNumber?this.serviceNumber:this.imageForm.value.vehical,//assestId
       "Filter":"CustAsstService"
     }
     this.ApiServicesService.getToken().subscribe((data:any)=>{
@@ -81,6 +81,7 @@ export class MyDocumentsComponent implements OnInit {
         this.vehicalDocsImg = data
         console.log("vehical docs image",this.vehicalDocsImg);
         this.toastrService.success('Delete Photo Docs successfully.')
+        this.getVehicleDocImage()
       })
     })
     
@@ -126,6 +127,7 @@ export class MyDocumentsComponent implements OnInit {
 
 this.vehicalService.fileUpload(uploadFile).subscribe((res:any)=>{
 console.log("res",res)
+this.getVehicleDocImage()
 })
   }
 }

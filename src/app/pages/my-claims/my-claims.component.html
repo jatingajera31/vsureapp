@@ -1,4 +1,4 @@
-<form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
     <div class="py-2 d-flex main-menu">
         <div class="d-flex sub-menu">
             <label>Select Vehical:</label>
@@ -11,5 +11,42 @@
         </div>
 
     </div>
-    <!-- <button type="submit">Upload Image</button> -->
-  </form>
+  </form> -->
+
+  
+<h4>My Claim List</h4>
+<table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>ClaimStatus</th>
+        <th>CustStatus</th>
+        <th>IHAContactNO</th>
+        <th>IHAName</th>
+        <th>PaymentAmount</th>
+        <th>PaymentDate</th>
+        <th>LastStatusUpdateDate</th>
+        <!-- <th>Phone</th>
+        <th>Address</th>
+        <th>Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let claim of claimlist; let i = index;">
+        <td>{{i+1}}</td>
+        <td>{{claim.ClaimStatus}}</td>
+        <td>{{claim.CustStatus}}</td>
+        <td>{{claim.IHAContactNO}}</td>
+        <td>{{claim.IHAName}}</td>
+        <td>{{claim.PaymentAmount}}</td>
+        <td>{{claim.PaymentDate | date}}</td>
+        <td>{{claim.LastStatusUpdateDate | date}}</td>
+        <!-- <td>{{ item.phone }}</td>
+        <td>{{ item.address }}</td> -->
+        <!-- <td>
+          <button type="button">Edit</button>
+          <button type="button">Delete</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
