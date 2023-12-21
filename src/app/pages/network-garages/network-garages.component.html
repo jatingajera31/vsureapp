@@ -1,1 +1,32 @@
-<p>network-garages works!</p>
+<h4>Network Garages</h4>
+<table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Garage Name</th>
+        <th>Garage ID</th>
+        <th>Mobile No</th>
+        <th>Address</th>
+        <th>service offered</th>
+        <!-- <th>Phone</th>
+        <th>Address</th>
+        <th>Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let claim of garage; let i = index;">
+        <td>{{i+1}}</td>
+        <td>{{claim.UserName}}</td>
+        <td>{{claim.UserId}}</td>
+        <td>{{claim.MobileNo}}</td>
+        <td>{{claim.Address1}}</td>
+        <td>{{claim.serviceooffered}}</td>
+        <!-- <td>{{ item.phone }}</td>
+        <td>{{ item.address }}</td> -->
+        <!-- <td>
+          <button type="button">Edit</button>
+          <button type="button">Delete</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
