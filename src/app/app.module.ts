@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HeaderComponent } from './common/header/header.component';
 import { VehicleDetailsComponent } from './pages/vehicle-details/vehicle-details.component';
+import { VehicleAssistanceComponent } from './pages/vehicle-assistance/vehicle-assistance.component'
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -53,6 +54,7 @@ import { AgmCoreModule } from '@agm/core';
         DashboardComponent,
         HeaderComponent,
         VehicleDetailsComponent,
+        VehicleAssistanceComponent,
         VehicleModelComponent,
         ServiceRequestComponent,
         GoogleMapsComponent,

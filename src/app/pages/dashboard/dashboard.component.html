@@ -19,20 +19,21 @@
                     <div *ngFor="let vehical of vehicalList; let i = index;">
                         <div class="col-12 vehical-info py-3">
                             <div class="image pr-2">
-                                <img *ngIf="vehical.type == '4 wheeler (MH46XY5300)'" src="../../../assets/svg/car-image.svg" style="width: 70px" class="image-part mx-auto d-block" alt="Responsive image">
-                                <img *ngIf="vehical.type == '2 wheeler (MH46XY5300)'" src="../../../assets/svg/bike-image.svg" style="width: 70px" class="image-part mx-auto d-block" alt="Responsive image">
+                                <img *ngIf="vehical.CustAssetType == 'PrivateCar'" src="../../../assets/svg/car-image.svg" style="width: 70px" class="image-part mx-auto d-block" alt="Responsive image">
+                                <img *ngIf="vehical.CustAssetType == 'TwoWheeler'" src="../../../assets/svg/bike-image.svg" style="width: 70px" class="image-part mx-auto d-block" alt="Responsive image">
                             </div>
                             <div class="text px-1">
                                 <span class="type">{{vehical.type}}</span>
-                                <span class="registration">Registration Number</span>
-                                <span class="model">Model No :</span>
-                                <span class="color">Colour :</span>
-                                <span class="fuel">Fuel type :</span>
+                                <span class="registration">Registration Number : {{vehical.CustRegistrationNo}}</span>
+                                <span class="model">Make :{{vehical.CustMake}}</span>
+                                <span class="model">Model No :{{vehical.CustMake}}</span>
+                                <span class="color">Colour :{{vehical.PaintType}}</span>
+                                <span class="fuel">Fuel type :{{vehical.FuelType}}</span>
                             </div>
                         </div>
                         <div *ngIf="i != vehicalList.length-1" class="border-bottom"></div>
                     </div>
-                    <div class="view-all">View All</div>
+                    <!-- <div class="view-all">View All</div> -->
                 </div>
             </div>
         </div>
@@ -50,6 +51,16 @@
                             <span>{{recent.date}}</span>
                             <span>{{recent.view}}</span>
                         </div>
+
+                        <!-- <div class="col-12 recent-info py-2">
+                            <span>{{i}}</span>
+                            <span>Claim Status : {{recent.ClaimStatus}}</span>
+                            <span>Claim Desc : {{recent.Claim_Status_Description}}</span>
+                            <span>Cust Remarks : {{recent.CustRemarks}}</span>
+                            <span>IHAN name : {{recent.IHAName}}</span>
+                            <span>Payment amount : {{recent.PaymentAmount}}</span>
+                            <span>Payment date : {{recent.PaymentDate | date}}</span>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -66,7 +77,7 @@
         </div>
     </div>
 
-    <div class="quick-services-details p-3">
+    <!-- <div class="quick-services-details p-3">
         <div class="card">
             <div class="card-header">Recent Purchases</div>
             <div class="card-body" style="min-height: 100px;">
@@ -74,5 +85,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -1,0 +1,151 @@
+.vehicle-page-details{
+    .my-vehicle {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #000000;
+    }
+
+    .card{
+        .header-icon {
+            position: absolute;
+            right: 5%;
+            top: 21%;
+            font-size: 19px;
+            color: #fff;
+        }
+    }
+
+    .vehical-details .card {
+        border-radius: 10px;
+    
+        .card-header.active {
+            background: linear-gradient(90deg, #7EA3D1 4.04%, #C1E8F7 100%), #0039CB;
+        }
+        .card-header.hide {
+            background: #AAACAF;
+        }
+        .card-header {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+    
+        .card-body {
+            padding: 0px;
+        }
+        
+        .vehical-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .image {
+                display: flex;
+                align-items: center;
+                vertical-align: middle;
+            }
+
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+            color: #000000;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            text-align: right;
+            color: #000000;
+            background: #E7E7E7;
+        }
+    }
+}
+
+.add-vehicle{
+    .d-flex{
+        align-items: center;
+    }
+    .date-period{
+        padding: 0;
+        margin: -15px 0;
+    }
+    .card-header {
+        background: linear-gradient(270deg, #D3AAD1 0%, #EAA1B9 89.44%), #FCB61F !important;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .card-header.addtovehicle {
+        border-radius: 0px 0px 10px 10px !important;
+    }
+
+    .add-vehical-list {
+        padding: 0px 15px;
+        label {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+            color: #000000;
+            margin-bottom: 0;
+        }
+        span {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+            color: #808080;
+        }
+
+        .custom-control.custom-radio {
+            width: 70%;
+            display: flex;
+            justify-content: space-around;
+            .custom{
+                line-height: 2;
+            }
+        }
+        select.browser-default.custom-select {
+            border: none;
+            padding: 0 0 0 7px;
+            height: auto;
+            width: 60%;
+            background: #fff url("../../../assets/svg/angle-down.svg") right 0.75rem center/11px 10px no-repeat;
+            outline: none;
+            font-weight: 700;
+            font-size: 13px;
+            color: #808080;
+        }
+        .custom-select:focus {
+            box-shadow: none;
+        }
+        .main-menu{
+            width: 100%;
+
+            .sub-menu{
+                width: 50%;
+            }
+        }
+    }
+    .py-2.list-disply {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.vehical-details .mat-expansion-panel-body {
+    padding: 0 !important;
+}
+
+input[type=text] {
+   border:none;
+  }
+@media (max-width:350px) {
+    .vehicle-type{
+        width: 20%;
+    }
+}

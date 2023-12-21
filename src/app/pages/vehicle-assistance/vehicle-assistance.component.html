@@ -1,1 +1,149 @@
-<p>vehicle-assistance works!</p>
+<!-- <app-header></app-header> -->
+<div class="vehicle-page-details">
+    <div class="my-vehicle py-3">Vehicles Assistance</div>
+    <div class="vehical-details p-3">
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="headerClickOpen(0); setStep(0)" hideToggle
+                (closed)="headerClickClose(0)">
+                <mat-expansion-panel-header>
+                    <div class="card">
+                        <div [ngClass]="detailOpen ? 'card-header active' : 'card-header hide'">Vehicle Details</div>
+                        <div class="header-icon"><i
+                                [ngClass]="detailOpen ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-up'"></i></div>
+                    </div>
+                </mat-expansion-panel-header>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="vehical-list">
+                            <div class="table-header mb-2 p-1">
+                                <div class="type pl-3">Types</div>
+                                <div class="">Vehicles No</div>
+                                <div class="make pr-3">Make</div>
+                            </div>
+                            <div *ngFor="let vehical of vehicalList; let i = index;">
+                                <div class="col-12 vehical-info py-2" (click)="openVehicleDialog(vehical)">
+                                    <div class="image pr-2">
+                                        <img *ngIf="vehical.CustAssetType == 'PrivateCar'"
+                                            src="../../../assets/svg/car-image.svg" style="width: 50px; height: 15px;"
+                                            class="image-part mx-auto d-block" alt="Responsive image">
+                                        <img *ngIf="vehical.CustAssetType == 'TwoWheeler'"
+                                            src="../../../assets/svg/bike-image.svg" style="width: 50px; height: 15px;"
+                                            class="image-part mx-auto d-block" alt="Responsive image">
+                                    </div>
+                                    <div class="number">{{vehical.CustRegistrationNo}}</div>
+                                    <div class="make">{{vehical.CustMake}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- <mat-expansion-panel [expanded]="step === 1" (opened)="headerClickOpen(1); setStep(1)" hideToggle
+                (closed)="headerClickClose(1)">
+                <mat-expansion-panel-header>
+                    <div class="card">
+                        <div [ngClass]="vehicleOpen ? 'card-header active' : 'card-header hide'"><i class="fa fa-plus"
+                                aria-hidden="true" style="font-size:14px;"></i> Add Vehicle</div>
+                        <div class="header-icon"><i
+                                [ngClass]="vehicleOpen ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-up'"></i></div>
+                    </div>
+                </mat-expansion-panel-header>
+                <form class="login-form text-center border-light px-4 py-3 py-10">
+                    <div class="card add-vehicle">
+                        <div class="card-body">
+                            <div class="add-vehical-list">
+                                <div class="py-2 list-disply">
+                                    <label class="vehicle-type">Vehical Type :</label>
+                                    <div class="custom-control custom-radio">
+                                        <div class="d-flex">
+                                            <input id="2wheel" type="radio" value="TwoWheeler" name="AssetType"
+                                                formControlName="AssetType" (click)="vehicleType('TwoWheeler')" class="pr-4">
+                                            <label for="male" class="pl-3 ">2 Wheel</label>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <input id="4wheel" type="radio" value="PrivateCar" name="AssetType"
+                                                formControlName="AssetType" (click)="vehicleType('PrivateCar')">
+                                            <label for="female" class="pl-3">4 Wheel</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-bottom"></div>
+                                <div class="py-2 d-flex main-menu">
+                                    <div class="d-flex sub-menu">
+                                        <label>Make :</label>
+                                        <select class="browser-default custom-select" formControlName="Make"
+                                            (change)="onMakeChange($event)">
+                                            <option selected>select</option>
+                                            <option *ngFor="let make of this.makeData" 
+                                                [value]="make.Make_Name + ',' + make.Vehicle_Type">{{make.Make_Name}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="border-bottom"></div>
+                                <div class="py-2 d-flex">
+                                    <label class="add-custom">Model :</label>
+                                    <select class="browser-default custom-select" formControlName="Model"
+                                        style="width: 79%;">
+                                        <option *ngFor="let model of this.modelData" [value]="model.Model_Name">
+                                            {{model.Model_Name}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="border-bottom"></div>
+                                <div class="py-2 d-flex">
+                                    <label class="add-custom">Variant :</label>
+                                    <input type="text" class="form-control" formControlName="Variant">
+                                </div>
+                                <div class="border-bottom"></div>
+                                <div class="py-2 d-flex">
+                                    <label class="add-custom">Fuel Type :</label>
+                                    <select class="browser-default custom-select" formControlName="FuelType"
+                                        style="width: 70%;">
+                                        <option selected>select</option>
+                                        <option *ngFor="let f of fuel" [value]="f.LOVNAME">{{f.LOVNAME}}</option>
+                                    </select>
+                                </div>
+                                <div class="border-bottom"></div>
+                               <div class="d-flex">
+                                <label for="">Manufacturing Year</label>
+                                <div class="py-2 d-flex">
+                                    <input type="date" class="form-control" formControlName="ManufacturingYear"
+                                        style="width: 100%;">
+
+                                </div>
+                               </div>
+
+
+
+                                <div class="border-bottom"></div>
+                                <div class="py-2"><label>RC No :</label>
+                                    <input type="text" class="form-control" formControlName="IMEINo">
+                                </div>
+                                <div class="border-bottom"></div>
+                                <div class="py-2"><label>Physical Address :</label>
+                                    <input type="text" class="form-control" formControlName="physicalAddress">
+                                </div>
+                                <div class="border-bottom"></div>
+
+                                <div class="border-bottom"></div>
+                                <div class="py-2"><label>Postal Address :</label> <span class="px-2"></span>
+                                    <input type="text" class="custom-select" formControlName="postalAddress">
+                                </div>
+                                <div class="border-bottom"></div>
+                                <div class="py-2"><label>Remarks :</label> <span class="px-2"></span>
+                                    <input type="text" class="custom-select form-control" formControlName="Remarks">
+                                </div>
+                            </div>
+                            <button type="submit" class="card-header addtovehicle" (click)="registerAsset()">Add To
+                                My Vehicle</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-expansion-panel> -->
+        </mat-accordion>
+    </div>
+</div>

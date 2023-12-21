@@ -41,9 +41,9 @@
         
             <div class="sidebar-footer">
               <div class="image-list">
-                <img src="../../../assets/svg/sidebar-home.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                <img src="../../../assets/svg/sidebar-home.svg" style="width: 20px" [routerLink]="['/dashboard']" class="rounded image-part mx-auto d-block" alt="Responsive image">
                 <img src="../../../assets/svg/sidebar-user.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
-                <img src="../../../assets/svg/sidebar-setting.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image">
+                <!-- <img src="../../../assets/svg/sidebar-setting.svg" style="width: 20px" class="rounded image-part mx-auto d-block" alt="Responsive image"> -->
                 <img src="../../../assets/svg/sidebar-pin.svg" style="width: 20px" class="rounded image-part mx-auto d-block" (click)="logout()" alt="Responsive image">
               </div>
             </div>
