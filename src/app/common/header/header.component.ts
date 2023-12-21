@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-
+ 
   constructor(private observer: BreakpointObserver, private router: Router) {}
 
   ngOnInit() {}
@@ -47,6 +47,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           this.sidenav.close();
         }
       });
+  }
+  toggleSidebar() {
+    this.sidenav.toggle();
   }
 
   logout(){

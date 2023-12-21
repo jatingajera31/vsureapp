@@ -1,10 +1,14 @@
+
 .sidebar-page{
-  .sidebar-page{
+
+  .sidebar-page1{
+  
       font-family: 'Inter';
       font-style: normal;
       font-size: 14px;
     }
     .header-page{
+      
         background: #0000B5;
         height: 70px;
         align-items: center;
@@ -35,8 +39,11 @@
         padding: 16px;
         overflow: auto;
       }
+      .mat-drawer-container{
+        position: unset;
+      }
       mat-sidenav-container {
-        height: calc(100% - 70px);
+        // height: calc(100% - 70px);
       }
       .menu-button {
         width: 100%;
@@ -130,4 +137,23 @@
       font-size: 12px !important;
     }
   }
+  .example-sidenav-content{
+    padding-top: 100px;
+  }
+ 
+}
+.mat-drawer{
+  position: fixed;
+  top: 70px;
+}
+
+.example-sidenav-content{
+  padding-top: 100px;
+}
+.sidebar-page-header-new{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
